@@ -23,10 +23,10 @@ int main()
 	printf("\n.:: Starting main process... <PID#%d>\n", getpid());
 	printf(".:: Create child process.. \n");
 
-	PID = fork();
+	PID = fork(); // creates a child process
 	check_fork(PID);
 
-	if (PID == 0) {
+	if (PID == 0) { // unique code for the child process to execute
 		printf("\n    .:: Starting child process.. <PID#%d>\n", getpid());
 		fibonacci(); 
 		printf("    .:: Child process closed! <PID#%d>\n", getpid());
@@ -34,7 +34,8 @@ int main()
 	}
 
 	printf(".:: Waiting for child process to finish.. \n");
-	wait(NULL);
+	
+	wait(NULL); // parent wait until child process finishes
 	printf("\n.:: Returning to the main process.. \n");
 	printf(".:: Main process closed! <PID#%d> \n\n", getpid());
 
